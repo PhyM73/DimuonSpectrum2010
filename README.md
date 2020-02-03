@@ -1,6 +1,6 @@
 # DimuonSpectrum2010
 
-- zh_CN [简体中文](https://github.com/PhyM73/DimuonSpectrum2010/readme/README.zh_CN.md)
+- zh_CN [简体中文](https://github.com/PhyM73/DimuonSpectrum2010/blob/master/readme/README.zh_CN.md)
 
 This is a simple analysis example to compute the spectrum of two muon final state with CMS Open Data.
 
