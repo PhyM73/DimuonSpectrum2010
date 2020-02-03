@@ -4,16 +4,14 @@
 
 This is a simple analysis example to compute the spectrum of two muon final state with CMS Open Data.
 
-It is based on the original code in [Example code to produce the di-muon spectrum from a CMS 2010 primary dataset](http://opendata.web.cern.ch/record/560) on the CERN Open Data portal (Geiser, Achim. Dutta, Irene. Hirvonsalo, Harri. Sheeran, Bridget. (2017). CERN Open Data Portal. DOI: 10.7483/OPENDATA.CMS.B8MR.C4A2) and another github project [DimuonSpectrum2011](https://github.com/cms-opendata-analyses/DimuonSpectrum2011), and modified here for direct download from github. 
+It is based on the [Example code](http://opendata.web.cern.ch/record/560) to produce the di-muon spectrum from a CMS 2010 primary dataset on the CERN Open Data portal (Geiser, Achim. Dutta, Irene. Hirvonsalo, Harri. Sheeran, Bridget. (2017). CERN Open Data Portal. DOI: 10.7483/OPENDATA.CMS.B8MR.C4A2) and another github project [DimuonSpectrum2011](https://github.com/cms-opendata-analyses/DimuonSpectrum2011), and modified here for direct download from github. 
 
 The modifications with respect to the original code are the following: 
 
 - the class name has been changed from `DemoAnalyzer` to `DimuonSpectrum2010` in order to avoid conflict for any existing `DemoAnalyzer` plugins in the working area
 - the file paths have been modified to be relative in the configuration file, i.e. they point to the `datasets` directory, which is under the directory from where there program will be run.
 
-Run this code in [CMS Open Data VM](http://opendata.web.cern.ch/VM/CMS/2010)
-
-If you have not installed the CMSSW area do the following:
+You can run this code in [CMS Open Data VM](http://opendata.web.cern.ch/VM/CMS/2010). If you have not installed the CMSSW area do the following:
 
 ```
 cmsrel CMSSW_4_2_8
@@ -21,7 +19,7 @@ cmsrel CMSSW_4_2_8
 
 You can also run this code on the [CMS Open Data Docker Image](http://opendata.cern.ch/docs/cms-guide-docker) if you are interested in that.
 
-If you already have the CMSSW or run the docker container, start directly with:
+If you already have the CMSSW on your VM or run the docker container, start directly with:
 
 ```
 cd CMSSW_4_2_8/src
