@@ -1,5 +1,7 @@
 # DimuonSpectrum2010
 
+- zh_CN [简体中文](https://github.com/PhyM73/DimuonSpectrum2010/readme/README.zh_CN.md)
+
 This is a simple analysis example to compute the spectrum of two muon final state with CMS Open Data.
 
 It is based on the original code in [Example code to produce the di-muon spectrum from a CMS 2010 primary dataset](http://opendata.web.cern.ch/record/560) on the CERN Open Data portal (Geiser, Achim. Dutta, Irene. Hirvonsalo, Harri. Sheeran, Bridget. (2017). CERN Open Data Portal. DOI: 10.7483/OPENDATA.CMS.B8MR.C4A2) and another github project [DimuonSpectrum2011](https://github.com/cms-opendata-analyses/DimuonSpectrum2011), and modified here for direct download from github. 
