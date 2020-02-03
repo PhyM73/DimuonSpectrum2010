@@ -1,6 +1,6 @@
 # DimuonSpectrum2010
 
-本项目是一个使用 CMS Open Data 计算双 $\mu$ 子不变质量谱的简单分析样例。
+本项目是一个使用 CMS Open Data 计算双μ子不变质量谱的简单分析样例。
 
 本项目基于 CERN Open Data 门户网站上的 [Example code to produce the di-muon spectrum from a CMS 2010 primary dataset](http://opendata.web.cern.ch/record/560) (Geiser, Achim. Dutta, Irene. Hirvonsalo, Harri. Sheeran, Bridget. (2017). CERN Open Data Portal. DOI: 10.7483/OPENDATA.CMS.B8MR.C4A2) 并将所需文件做了打包，以便直接下载运行。同时，本项目还参考了另一个 `GitHub` 项目[DimuonSpectrum2011](https://github.com/cms-opendata-analyses/DimuonSpectrum2011)
 
