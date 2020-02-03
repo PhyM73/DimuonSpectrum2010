@@ -9,9 +9,7 @@ The modifications with respect to the original code are the following:
 - the class name has been changed from `DemoAnalyzer` to `DimuonSpectrum2010` in order to avoid conflict for any existing `DemoAnalyzer` plugins in the working area
 - the file paths have been modified to be relative in the configuration file, i.e. they point to the `datasets` directory, which is under the directory from where there program will be run.
 
-Run this code in [CMS Open Data VM](http://opendata.web.cern.ch/VM/CMS/2010)
-
-If you have not installed the CMSSW area do the following:
+You can run this code in [CMS Open Data VM](http://opendata.web.cern.ch/VM/CMS/2010) If you have not installed the CMSSW area do the following:
 
 ```
 cmsrel CMSSW_4_2_8
@@ -19,7 +17,7 @@ cmsrel CMSSW_4_2_8
 
 You can also run this code on the [CMS Open Data Docker Image](http://opendata.cern.ch/docs/cms-guide-docker) if you are interested in that.
 
-If you already have the CMSSW or run the docker container, start directly with:
+If you already have the CMSSW on your VM or run the docker container, start directly with:
 
 ```
 cd CMSSW_4_2_8/src
