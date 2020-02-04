@@ -13,7 +13,7 @@ The modifications with respect to the original code are the following:
 
 You can run this code in [CMS Open Data VM](http://opendata.web.cern.ch/VM/CMS/2010). If you have not installed the CMSSW area do the following:
 
-```
+```bash
 cmsrel CMSSW_4_2_8
 ```
 
@@ -21,7 +21,7 @@ You can also run this code on the [CMS Open Data Docker Image](http://opendata.c
 
 If you already have the CMSSW on your VM or run the docker container, start directly with:
 
-```
+```bash
 cd CMSSW_4_2_8/src
 cmsenv
 ```
@@ -29,7 +29,7 @@ cmsenv
 For this example, you need to create an additional directory, you can call it `WorkDir` or choose another name.
 Go to this directory, and download the example code.
 
-```
+```bash
 mkdir WorkDir
 cd WorkDir
 git clone git://github.com/PhyM73/DimuonSpectrum2010.git
@@ -38,7 +38,7 @@ git clone git://github.com/PhyM73/DimuonSpectrum2010.git
 
 Go to the example directory, and compile with `scram b`. 
 
-```
+```bash
 cd DimuonSpectrum2010
 scram b
 ```
@@ -47,7 +47,7 @@ The input files are defined in the configuration file `demoanalyzer_cfg.py` and 
 
 Run the example as configured in the configuration file. 
 
-```
+```bash
 cmsRun demoanalyzer_cfg.py
 ```
 
