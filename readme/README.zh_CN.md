@@ -20,7 +20,7 @@ cmsrel CMSSW_4_2_8
 如果您已经安装了 CMSSW 或运行了 Docker 容器，请直接运行如下命令：
 
 ```bash
-cd CMSSW_4_2_8 / src
+cd CMSSW_4_2_8/src
 cmsenv
 ```
 
