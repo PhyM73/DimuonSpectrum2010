@@ -17,7 +17,7 @@ process.options = cms.untracked.PSet(wantSummary=cms.untracked.bool(True))
 #    default is preset to 10000 events                                 *
 #    set it to -1 to process all the events                            *
 # **********************************************************************
-process.maxEvents = cms.untracked.PSet(input=cms.untracked.int32(-1))
+process.maxEvents = cms.untracked.PSet(input=cms.untracked.int32(10000))
 
 # set the number of events to be skipped (if any) at end of file below
 
