@@ -4,7 +4,7 @@
 
 This is a simple analysis example to compute the spectrum of two muon final state with CMS Open Data.
 
-It is based on the [Example code](http://opendata.web.cern.ch/record/560) to produce the di-muon spectrum from a CMS 2010 primary dataset on the CERN Open Data portal (Geiser, Achim. Dutta, Irene. Hirvonsalo, Harri. Sheeran, Bridget. (2016). CERN Open Data Portal. DOI: 10.7483/OPENDATA.CMS.TF26.KG2D) and another github project [DimuonSpectrum2011](https://github.com/cms-opendata-analyses/DimuonSpectrum2011), and modified here for direct download from github. 
+It is based on the [Example code](http://opendata.web.cern.ch/record/560) to produce the di-muon spectrum from a [CMS 2010 primary dataset](http://opendata.web.cern.ch/record/14) on the CERN Open Data portal (Geiser, Achim. Dutta, Irene. Hirvonsalo, Harri. Sheeran, Bridget. (2016). CERN Open Data Portal. DOI: 10.7483/OPENDATA.CMS.TF26.KG2D) and another github project [DimuonSpectrum2011](https://github.com/cms-opendata-analyses/DimuonSpectrum2011), and modified here for direct download from github. 
 
 The modifications with respect to the original code are the following: 
 
@@ -17,7 +17,11 @@ You can run this code in [CMS Open Data VM](http://opendata.web.cern.ch/VM/CMS/2
 cmsrel CMSSW_4_2_8
 ```
 
-You can also run this code on the [CMS Open Data Docker Image](http://opendata.cern.ch/docs/cms-guide-docker) if you are interested in that.
+You can also run this code in a [CMS Open Data Docker](http://opendata.cern.ch/docs/cms-guide-docker) container if you are interested in that:
+
+```bash
+docker run --name dimu2010 -it cmsopendata/cmssw_4_2_8 bash
+```
 
 If you already have the CMSSW on your VM or run the docker container, start directly with:
 
