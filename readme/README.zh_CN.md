@@ -46,7 +46,7 @@ scram b
 cmsRun demoanalyzer_cfg.py
 ```
 
-其输出是一个包含多个直方图的 ROOT 文件，默认情况下命名为DoubleMu.root,  包含有10000个输入 `event`。您可以使用 ROOT 查看这些内容。您还可以修改 `demoanalyzer_cfg.py` 中的相关部分以选择 `datasets` 中其他的输入文件，并重新运行和比较。或者使用 ROOT 软件将各个输出文件融合起来以分析全部的60000个 `event`. 现有的 DoubleMu2010.root 文件可以提供参考。
+其输出是一个包含多个直方图的 ROOT 文件，默认情况下命名为 DoubleMu.root, 包含有10000个输入 `event`。您可以使用 ROOT 查看这些内容。您还可以修改 `demoanalyzer_cfg.py` 中的相关部分以选择 `datasets` 中其他的输入文件，并重新运行和比较。或者使用 ROOT 软件将各个输出文件融合起来以获得更全面的分析样本，同时也请注意 `demoanalyzer_cfg.py` 中的 `process.maxEvent` 参数。现有的 DoubleMu2010.root 文件可以提供参考。
 
 有关更多详细信息，请参阅 `src/DimuonSpectrum2010.cc` 中的注释。
 
