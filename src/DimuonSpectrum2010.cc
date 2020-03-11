@@ -78,6 +78,7 @@ private:
 	// ----------member data ---------------------------
 
 // declare Root histograms
+// 1-D histogram with a double per channel
 // for a description of their content see below
 TH1D *h1;
 TH1D *h2;
@@ -121,6 +122,10 @@ DimuonSpectrum2010::DimuonSpectrum2010(const edm::ParameterSet& iConfig) {
 // *****************************************************************
 
 //now do what ever initialization is needed
+//access the TFileService object
+//  TFileService is a CMSSW Framework Service that allows one to create ROOT objects 
+//  in multiple modules and store those histograms in the same ROOT file.
+//  See https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideTFileService for more details. 
 edm::Service<TFileService> fs;
 
 // ************************************
@@ -255,6 +260,9 @@ using namespace std;
 // INFO: globalMuons
 // NB: note that when using keyword "globalMuons" getByLabel-function returns 
 //     reco::TrackCollection
+// Pass the handle "gmuons" to the method "getByLabel", which is used to 
+// retrieve one and only one instance of the type, reco::TrackCollection, with
+// the label, "globalMuons".
   Handle<reco::TrackCollection> gmuons;
   iEvent.getByLabel("globalMuons", gmuons);
 
@@ -322,8 +330,7 @@ using namespace std;
 // NTS:  Validity of the Hit must be asked from the HitPattern-object!
       if (p.validHitFilter(hit) && p.pixelHitFilter(hit))
           PixelHits++;
-      if (p.validHitFilter(hit))
-	  ValidHits++;
+      if (p.validHitFilter(hit))  ValidHits++;
     } // end of loop over hits
 
 // WHAT: Fill number of ValidHits and PixelHits in current globalMuon-Track
@@ -363,8 +370,7 @@ using namespace std;
 // if the hit is valid and/or in pixel, increase counter
           if (p1.validHitFilter(hit) && p1.pixelHitFilter(hit))
               PixelHits1++;
-          if (p1.validHitFilter(hit))
-              ValidHits1++;
+          if (p1.validHitFilter(hit)) ValidHits1++;
         } // end of loop over hits
 
 // WHAT: Compare electric charges of the current two globalMuon-Tracks 
