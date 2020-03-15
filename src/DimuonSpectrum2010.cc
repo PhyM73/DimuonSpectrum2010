@@ -312,7 +312,7 @@ using namespace std;
 //       3) Determine if there are enough Hits that have been recorded in the 
 //          pixel detector(s).
 // WHY:  quality cuts are applied to eliminate badly reconstructed muon 
-//       candidates   
+//       candidates
     int ValidHits = 0, PixelHits = 0;
 
 // WHAT: Get HitPattern-object for Track of current Global Muon
