@@ -1,5 +1,5 @@
 import FWCore.ParameterSet.Config as cms
-from RecoMuon.TrackingTools.MuonServiceProxy_cff import *
+# from RecoMuon.TrackingTools.MuonServiceProxy_cff import *
 import PhysicsTools.PythonAnalysis.LumiList as LumiList
 import FWCore.ParameterSet.Types as CfgTypes
 process = cms.Process("Demo")
