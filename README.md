@@ -47,7 +47,11 @@ cd DimuonSpectrum2010
 scram b
 ```
 
-The input files are defined in the configuration file `demoanalyzer_cfg.py` and are already in the `datasets` directory. This example runs on 2010 data by default. In order not to overwrite the existing DoubleMu.root, to which you can compare your output, rename it before you run.
+The input files are defined in the configuration file `demoanalyzer_cfg.py` and are already in the `datasets` directory. This example runs on 2010 data by default. In this case, download to the the datasets directory:
+ - the [list of validated runs for 2010](http://opendata.web.cern.ch/record/1000)
+ - the file indexes for the [2010 datasets](http://opendata.web.cern.ch/record/14)
+ 
+In order not to overwrite the existing DoubleMu.root, to which you can compare your output, rename it before you run.
 
 Run the example as configured in the configuration file. 
 
