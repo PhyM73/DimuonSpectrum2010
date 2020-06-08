@@ -6,7 +6,7 @@ process = cms.Process("Demo")
 
 # intialize MessageLogger and output report
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
-process.MessageLogger.cerr.threshold = 'INFO'
+process.MessageLogger.cerr.threshold = 'ERROR'
 process.MessageLogger.categories.append('Demo')
 process.MessageLogger.cerr.INFO = cms.untracked.PSet(limit=cms.untracked.int32(-1))
 process.options = cms.untracked.PSet(wantSummary=cms.untracked.bool(True))
@@ -14,10 +14,10 @@ process.options = cms.untracked.PSet(wantSummary=cms.untracked.bool(True))
 # set the maximum number of events to be processed                     *
 #    this number (argument of int32) is to be modified by the user     *
 #    according to need and wish                                        *
-#    default is preset to 10000 events                                 *
+#    default is preset to 10000 events for code test                   *
 #    set it to -1 to process all the events                            *
 # **********************************************************************
-process.maxEvents = cms.untracked.PSet(input=cms.untracked.int32(10000))
+process.maxEvents = cms.untracked.PSet(input=cms.untracked.int32(-1))
 
 # set the number of events to be skipped (if any) at end of file below
 
@@ -40,7 +40,15 @@ import FWCore.Utilities.FileUtils as FileUtils
 # ****************************************************************
 #
 # *** DoubleMu data set ***
-files2010data = FileUtils.loadListFromFile('datasets/CMS_Run2010B_Mu_AOD_Apr21ReReco-v1_0000_file_index.txt')
+# files2010data = FileUtils.loadListFromFile('datasets/CMS_Run2010B_Mu_AOD_Apr21ReReco-v1_0000_file_index.txt')
+# process.source = cms.Source("PoolSource", fileNames=cms.untracked.vstring(*files2010data))
+
+# read the index files automatically
+files2010data = []
+datasets = FileUtils.os.walk(r"./data")
+for path, dir_list, file_list in datasets:
+    for indexfile in file_list:
+        files2010data.extend(FileUtils.loadListFromFile(FileUtils.os.path.join(path, indexfile)))
 process.source = cms.Source("PoolSource", fileNames=cms.untracked.vstring(*files2010data))
 
 # apply JSON file
