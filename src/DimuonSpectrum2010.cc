@@ -86,6 +86,7 @@ TH1D *h3;
 TH1D *h4;
 
 TH1D *h5;
+TH1D *h51;
 TH1D *h6;
 
 TH1D *h10;
@@ -104,6 +105,9 @@ TH1D *h100;
 //
 // constants, enums and typedefs
 //
+  // WHAT: set square of muon mass
+  // WHY:  needed in later calculations
+  double sqmums = (0.105658) * (0.105658);
 
 //
 // static data member definitions
@@ -163,12 +167,17 @@ h4->GetYaxis()->SetTitle("Number of Events");
 
 // dimuon mass spectrum up to 4 GeV (low mass range, rho/omega, phi, psi)
 h5 = fs->make<TH1D>("GMmass" , "GMmass" , 400, 0. , 4. );
-h5->GetXaxis()->SetTitle("Invariant Mass for Nmuon>=2 (in GeV/c^2)");
+h5->GetXaxis()->SetTitle("Invariant Mass for Nmuon>=2 (GeV/c^2)");
 h5->GetYaxis()->SetTitle("Number of Events");
+
+// dimuon mass spectrum from 8 GeV to 4 GeV (a zoom for the upsilon peaks)
+h51 = fs->make<TH1D>("GMmass" , "GMmass" , 40, 8. , 12. );
+h51->GetXaxis()->SetTitle("Invariant Mass for Nmuon>=2 (GeV/c^2)");
+h51->GetYaxis()->SetTitle("Number of Events");
 
 // dimuon mass spectrum up to 120 GeV (high mass range: upsilon, Z)
 h6 = fs->make<TH1D>("GMmass_extended" , "GMmass" , 240, 0. , 120. );
-h6->GetXaxis()->SetTitle("Invariant Mass for Nmuon>=2 (in GeV/c^2)");
+h6->GetXaxis()->SetTitle("Invariant Mass for Nmuon>=2 (GeV/c^2)");
 h6->GetYaxis()->SetTitle("Number of Events");
 
 // global muon track chi2
@@ -200,8 +209,18 @@ h61->GetYaxis()->SetTitle("Number of Events");
 
 // unlike sign dimuon invariant mass from global muon selection, 
 // binning chosen to correspond to log(0.3) - log(500), 200 bins/log10 unit
-h100 = fs->make<TH1D>("GM_mass_log", "GM mass log", 644, -.52, 2.7); 
-h100->GetXaxis()->SetTitle("Invariant Log10(Mass) for Nmuon>=2 (in log10(m/GeV/c^2))");
+Int_t nbins = 644;
+Double_t *xbins  = new Double_t[nbins+1];
+Double_t xlogmin = log10(0.3);
+Double_t xlogmax = log10(500);
+Double_t dlogx   = (xlogmax-xlogmin)/((Double_t)nbins);
+for (int i=0;i<=nbins;i++) { 
+  Double_t xlog = xlogmin+ i*dlogx;
+  xbins[i] = exp( log(10) * xlog ); 
+}
+
+h100 = fs->make<TH1D>("GM_mass_log", "GM mass log", nbins, xbins); 
+h100->GetXaxis()->SetTitle("Invariant Mass for Nmuon>=2 (GeV/c^2)");
 h100->GetYaxis()->SetTitle("Number of Events/GeV");
 
 }
@@ -243,11 +262,12 @@ using namespace std;
 
 // Event is to be analyzed
 
-  LogInfo("Demo")
-  << "Starting to analyze \n"
-  << "Event number: " << (iEvent.id()).event()
-  << ", Run number: " << iEvent.run()
-  << ", Lumisection: " << iEvent.luminosityBlock();
+  // the following can be uncommented if more log information is wished    
+  // LogInfo("Demo")
+  // << "Starting to analyze \n"
+  // << "Event number: " << (iEvent.id()).event()
+  // << ", Run number: " << iEvent.run()
+  // << ", Lumisection: " << iEvent.luminosityBlock();
 
 //------------------Load (relevant) Event information------------------------//
 // INFO: Getting Data From an Event
@@ -269,11 +289,7 @@ using namespace std;
 //------------------analysing Global Muons (gmuons-TrackCollection)----------//
 
 // WHAT: declare variables used later
-  double sqm1, s1, s2, s, w;
-
-// WHAT: set square of muon mass
-// WHY:  needed in later calculations
-  sqm1 = (0.105658) * (0.105658);
+  double s1, s2, s, w;
 
 // WHAT: Fill histogram of the number of globalMuon-Tracks 
 //       in the current Event.
@@ -388,9 +404,9 @@ using namespace std;
 // WHAT: Calculate invariant mass of globalMuon-Tracks under comparison 
 // (Iterators "it" and "i")
 // WHY: in order to fill the mass histogram
-          s1 = sqrt(((it->p())*(it->p()) + sqm1) * ((i->p())*(i->p()) + sqm1));
+          s1 = sqrt(((it->p())*(it->p()) + sqmums) * ((i->p())*(i->p()) + sqmums));
           s2 = it->px()*i->px() + it->py()*i->py() + it->pz()*i->pz();
-          s = sqrt(2.0 * (sqm1 + (s1 - s2)));
+          s = sqrt(2.0 * (sqmums + (s1 - s2)));
 
 // WHAT: Store the invariant mass of two muons with unlike sign charges in 
 //       linear scale
@@ -405,7 +421,7 @@ using namespace std;
 // WHAT: Store the invariant mass of two muons with unlike charges in log scale
 // WHY: Reproduce the "Invariant mass spectrum of dimuons in events"-plot 
 //      from MUO-10-004
-          h100->Fill(log10(s), w); // MUO-10-004 with MuonCollection
+          h100->Fill(s, w); // MUO-10-004 with MuonCollection
 
         } // end of unlike charge if
       }   //end of for(;i!=gmuons....)
